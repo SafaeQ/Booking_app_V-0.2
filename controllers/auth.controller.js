@@ -8,7 +8,6 @@ const {
 const auth_signup = async (req, res, next) => {
 
     try {
-        console.log(req.body)
         const {
             name,
             email,
@@ -26,7 +25,6 @@ const auth_signup = async (req, res, next) => {
             .catch((err) => {
                 throw err
             })
-
 
         console.log(user)
         return res.json({
@@ -58,12 +56,13 @@ const auth_login = async (req, res) => {
             user.token = token(user);
             res.status(200).json(user);
         }
+        console.log(user);
+        return res.send(user)
 
         res.status(400).send("Invalid Credentials");
     } catch (error) {
         console.log(error);
     }
-    res.render('auth/signin')
 }
 
 
