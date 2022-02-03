@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "yarn": "^1.22.17"
-  }
+  },
+  "name": "booking_app_v-0.2",
+  "description": "le but de ce projet est de permettre à l'administrateur de gérer la gestion des hôtels, des clients et des propriétaires",
+  "version": "1.0.0",
+  "main": "sever.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafaeQ/Booking_app_V-0.2.git"
+  },
+  "author": "safae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SafaeQ/Booking_app_V-0.2/issues"
+  },
+  "homepage": "https://github.com/SafaeQ/Booking_app_V-0.2#readme"
 }
