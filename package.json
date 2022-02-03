@@ -2,14 +2,15 @@
   "dependencies": {
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
-    "mongoose": "^6.2.0"
+    "mongoose": "^6.2.0",
+    "nodemon": "^2.0.15"
   },
   "name": "booking_app_v-0.2",
   "description": "le but de ce projet est de permettre à l'administrateur de gérer la gestion des hôtels, des clients et des propriétaires",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "server"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
