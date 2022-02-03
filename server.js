@@ -4,8 +4,10 @@ const port = 8000;
 const connect = require("./connection/db");
 
 const router = require('./router/routes')
+const authRouter = require('./router/auth.routes')
 
 app.use('/', router)
+app.use('/auth', authRouter)
 
 connect()
     .catch((error) => {

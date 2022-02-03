@@ -8,7 +8,7 @@ const {
 const auth_signup = async (req, res, next) => {
 
     const {
-        username,
+        name,
         email,
         password,
         role
@@ -18,7 +18,7 @@ const auth_signup = async (req, res, next) => {
         let encryptedPassword = await bcrypt.hash(password, 10)
 
         const user = await Admin.create({
-                username,
+                name,
                 email: email.toLowerCase(),
                 password: encryptedPassword,
                 role
