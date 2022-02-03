@@ -1,9 +1,16 @@
 const Admin = require('../models/admin')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
-const {
-    token
-} = require('../utils/token')
+const signToken = id => {
+    return jwt.sign({
+        id
+    }, 'secret');
+}
+
+// const {
+//     token
+// } = require('../utils/token')
 
 const auth_signup = async (req, res, next) => {
 
@@ -47,19 +54,35 @@ const auth_login = async (req, res) => {
             password
         } = req.body;
 
+        if (!email && !password) {
+            return res.status(401).json({
+                status: 'fail',
+                message: 'Please Provide an email !'
+            });
+        }
+
         const user = await Admin.findOne({
             email
         });
 
-        if (user && (await bcrypt.compare(password, user.password))) {
-
-            user.token = token(user);
-            res.status(200).json(user);
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            res.status(401).json({
+                status: "fail",
+                msg: 'Incorrect Password or email !!'
+            });
         }
-        console.log(user);
-        return res.send(user)
 
-        res.status(400).send("Invalid Credentials");
+        const token = signToken(user._id);
+
+        res.status(200).json({
+            status: "success",
+            token
+        });
+
+        // console.log(user);
+        // return res.send(user)
+
+        // res.status(200).send(user);
     } catch (error) {
         console.log(error);
     }

@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
 
-// Create token
-const token = (user) => {
-    return jwt.sign({
-        user_id: user._id,
-        email: user.email,
-        roles: user.roles
+// // Create token
+// const token = (user) => {
+//     return jwt.sign({
+//         user_id: user._id,
+//         email: user.email,
+//         roles: user.roles
 
-    }, 'secret')
-}
+//     }, 'secret')
+// }
 
-module.exports = {
-    token
-}
+// module.exports = {
+//     token
+// }
