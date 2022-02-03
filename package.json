@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^4.17.2",
     "yarn": "^1.22.17"
   },
   "name": "booking_app_v-0.2",
