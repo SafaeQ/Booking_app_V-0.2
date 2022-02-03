@@ -6,6 +6,7 @@ const connect = require("./connection/db");
 const router = require('./router/routes')
 const authRouter = require('./router/auth.routes')
 
+app.use(express.json())
 app.use('/', router)
 app.use('/auth', authRouter)
 

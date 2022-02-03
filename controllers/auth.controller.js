@@ -7,35 +7,36 @@ const {
 
 const auth_signup = async (req, res, next) => {
 
-    const {
-        name,
-        email,
-        password,
-        role
-    } = req.body;
-
     try {
-        let encryptedPassword = await bcrypt.hash(password, 10)
+        console.log(req.body)
+        const {
+            name,
+            email,
+            password,
+            role
+        } = req.body;
 
+        let encryptedPassword = await bcrypt.hash(password, 10)
         const user = await Admin.create({
                 name,
                 email: email.toLowerCase(),
                 password: encryptedPassword,
-                role
+                role,
             })
             .catch((err) => {
                 throw err
             })
 
-        user.token = token;
 
         console.log(user)
         return res.json({
-            token: token(user),
+            name,
+            email,
+            role
         })
 
     } catch (error) {
-        console.error(error)
+        console.error("current err ", error)
     }
 }
 
