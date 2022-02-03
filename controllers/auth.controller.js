@@ -1,4 +1,5 @@
 const Admin = require('../models/admin')
+const Role = require('../models/role')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
@@ -8,9 +9,6 @@ const signToken = id => {
     }, 'secret');
 }
 
-// const {
-//     token
-// } = require('../utils/token')
 
 const auth_signup = async (req, res, next) => {
 
