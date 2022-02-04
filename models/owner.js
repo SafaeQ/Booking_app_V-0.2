@@ -16,6 +16,9 @@ const ownerSchema = new mongoose.Schema({
         // max: 1024,
         // min: 6,
     },
+    role: {
+
+    },
     date: {
         type: Date,
         default: Date.now,
