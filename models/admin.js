@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Admin = mongoose.model('Admin',
+const Admin = mongoose.model('User',
     new mongoose.Schema({
         name: {
             type: String,
