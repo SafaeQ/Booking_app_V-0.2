@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.2.0",
+    "nodemon": "^2.0.15"
+  },
+  "name": "booking_app_v-0.2",
+  "description": "le but de ce projet est de permettre à l'administrateur de gérer la gestion des hôtels, des clients et des propriétaires",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafaeQ/Booking_app_V-0.2.git"
+  },
+  "author": "safae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SafaeQ/Booking_app_V-0.2/issues"
+  },
+  "homepage": "https://github.com/SafaeQ/Booking_app_V-0.2#readme"
+}
