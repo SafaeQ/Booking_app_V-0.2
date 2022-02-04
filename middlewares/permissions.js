@@ -1,6 +1,6 @@
-const isAuthorized = (...roles) => {
+const isAuthorized = (...role) => {
     return (req, res, next) => {
-        if (!roles.includes(req.tokenData.role.name)) {
+        if (!role.includes(req.tokenData.role.name)) {
             res.status(401).json({
                 error: "you are not authorized"
             });

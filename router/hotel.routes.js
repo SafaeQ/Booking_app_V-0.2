@@ -9,7 +9,7 @@ const {
 } = require('../controllers/hotel.controller')
 const isAuthorized = require('../middlewares/permissions')
 
-hotelRouter.get('/hotels', isAuthorized(['admin', 'owner']), get_hotels)
+hotelRouter.get('/hotels', isAuthorized('admin', 'owner'), get_hotels)
 hotelRouter.get('/hotel/:id', get_hotel_byId)
 hotelRouter.post('/add-hotel', add_hotel)
 hotelRouter.put('/hotel/:id/update', update_hotel)
