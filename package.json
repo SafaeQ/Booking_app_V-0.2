@@ -5,7 +5,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-local-mongoose": "^6.1.0"
   },
   "name": "booking_app_v-0.2",
   "description": "le but de ce projet est de permettre à l'administrateur de gérer la gestion des hôtels, des clients et des propriétaires",
