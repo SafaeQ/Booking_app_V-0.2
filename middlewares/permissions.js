@@ -1,11 +1,29 @@
-const isAuthorized = (req, res, next) => {
-    if (!req.user || !req.user.isAuthorized) {
-        res.status(401).json({
-            error: 'Unauthorized'
-        })
-        return
+const jwt = require('express-jwt')
+const {
+    secret
+} = require('../config.json')
+
+const isAuthorized = (roles = []) => {
+    if (typeof roles === 'string') {
+        roles = [roles];
     }
-    next()
+    return [
+
+        jwt({
+            secret,
+            algorithms: ['HS256']
+        }),
+        (req, res, next) => {
+            if (roles.length && !roles.includes(req.user.role)) {
+                return res.status(401).json({
+                    message: 'Unauthorized'
+                });
+            }
+            next()
+        }
+    ]
 }
+
+
 
 module.exports = isAuthorized
