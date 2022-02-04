@@ -12,3 +12,5 @@ ownerRouter.get('/owner/:id', getOwner_byId)
 ownerRouter.post('/add-owner', add_owner)
 ownerRouter.put('/owner/:id/update', update_owner)
 ownerRouter.delete('/owner/:id/delete', delete_owner)
+
+module.exports = ownerRouter

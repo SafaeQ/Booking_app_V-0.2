@@ -1,4 +1,6 @@
 const Owner = require('../models/owner')
+const bcrypt = require("bcryptjs");
+
 
 const getOwner = async (req, res) => {
     try {
