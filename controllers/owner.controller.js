@@ -10,3 +10,15 @@ const getOwner = async (req, res) => {
         console.error(error);
     }
 }
+
+const getOwner_byId = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const owner = await Owner.findById(id).catch((err) => {
+            throw err;
+        });
+        res.status(200).send(owner);
+    } catch (error) {
+        console.log(error);
+    }
+}
