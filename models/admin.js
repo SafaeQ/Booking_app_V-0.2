@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
 
+
+const RoleSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        enum: ['admin', 'customer', 'owner']
+    },
+    status: {
+        type: Boolean
+    }
+});
+
 const Admin = mongoose.model('User',
     new mongoose.Schema({
         name: {
@@ -15,10 +27,7 @@ const Admin = mongoose.model('User',
             type: String,
             required: true,
         },
-        role: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Role'
-        },
+        role: RoleSchema,
         token: {
             type: String
         },
