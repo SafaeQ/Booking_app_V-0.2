@@ -11,6 +11,6 @@ hotelRouter.get('/hotels', get_hotels)
 hotelRouter.get('/hotel/:id', get_hotel_byId)
 hotelRouter.post('/add-hotel', add_hotel)
 hotelRouter.put('/hotel/:id/update', update_hotel)
-hotelRouter.delete('/hotel/:id/delete', )
+hotelRouter.delete('/hotel/:id/delete', delete_hotel)
 
 module.exports = hotelRouter
