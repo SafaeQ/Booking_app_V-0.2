@@ -6,11 +6,13 @@ const connect = require("./connection/db");
 const router = require('./router/routes')
 const authRouter = require('./router/auth.routes')
 const ownerRouter = require('./router/owner.routes')
+const hotelRouter = require('./router/hotel.routes')
 
 app.use(express.json())
 app.use('/', router)
 app.use('/auth', authRouter)
-app.use('/api', ownerRouter)
+// app.use('/api', ownerRouter)
+app.use('/api', hotelRouter)
 
 connect()
     .catch((error) => {
