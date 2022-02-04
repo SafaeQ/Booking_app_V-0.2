@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router(); //create new obj of router
+const router = express.Router();
 const checkAuthentication = require('../middlewares/isAuth')
 
 router.get('/', checkAuthentication, function (req, res) {
