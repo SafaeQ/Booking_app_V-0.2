@@ -2,9 +2,10 @@ const Admin = require('../models/admin')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
-const signToken = id => {
+const signToken = (id, role) => {
     return jwt.sign({
-        id
+        id,
+        role
     }, 'secret');
 }
 
@@ -24,7 +25,12 @@ const auth_signup = async (req, res, next) => {
                 name,
                 email: email.toLowerCase(),
                 password: encryptedPassword,
-                role,
+                role: role === 'admin' ? {
+                    name: role,
+                    status: false
+                } : {
+                    name: role
+                }
             })
             .catch((err) => {
                 throw err
@@ -69,17 +75,12 @@ const auth_login = async (req, res) => {
             });
         }
 
-        const token = signToken(user._id);
+        const token = signToken(user._id, user.role);
 
         res.status(200).json({
             status: "success",
             token
         });
-
-        // console.log(user);
-        // return res.send(user)
-
-        // res.status(200).send(user);
     } catch (error) {
         console.log(error);
     }
