@@ -23,7 +23,7 @@ const getOwner_byId = async (req, res) => {
     }
 }
 
-const add_owner = (req, res) => {
+const add_owner = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const owner = new Owner({
         name: req.body.name,
@@ -38,4 +38,40 @@ const add_owner = (req, res) => {
     } catch (error) {
         console.error(error);
     }
+}
+
+const update_owner = async (req, res) => {
+    const ownerId = req.params.id;
+    const {
+        name,
+        email
+    } = req.body;
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const updatedOwner = await Owner.findByIdAndUpdate(ownerId, {
+        name: name,
+        email: email,
+        password: hashedPassword,
+    });
+    if (!updatedOwner) return res.status(400).send("Owner does not updated!");
+    res.status(200).send("Owner updated successfully!");
+}
+
+const delete_owner = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const owner = await Owner.findByIdAndRemove(id).catch((err) => {
+            console.error(err);
+        });
+        res.status(200).json("Your Owner has been removed successfully");
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports = {
+    getOwner,
+    getOwner_byId,
+    add_owner,
+    update_owner,
+    delete_owner
 }
