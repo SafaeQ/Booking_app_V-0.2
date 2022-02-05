@@ -8,8 +8,8 @@ const {
     delete_hotel
 } = require('../controllers/hotel.controller')
 const isAuthorized = require('../middlewares/permissions')
-
-hotelRouter.get('/hotels', isAuthorized('admin'), get_hotels)
+const isAuth = require('../middlewares/isAuth')
+hotelRouter.get('/hotels', isAuth, isAuthorized('admin'), get_hotels)
 hotelRouter.get('/hotel/:id', get_hotel_byId)
 hotelRouter.post('/add-hotel', add_hotel)
 hotelRouter.put('/hotel/:id/update', update_hotel)
