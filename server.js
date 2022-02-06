@@ -2,7 +2,11 @@ const express = require('express');
 const app = express()
 const port = 8000;
 const connect = require("./connection/db");
+const bodyParser = require("body-parser")
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 const router = require('./router/routes')
 const authRouter = require('./router/auth.routes')
 const ownerRouter = require('./router/owner.routes')
@@ -12,7 +16,7 @@ const roomRouter = require('./router/room.routes')
 app.use(express.json())
 app.use('/', router)
 app.use('/auth', authRouter)
-// app.use('/api', ownerRouter)
+app.use('/api', ownerRouter)
 app.use('/api', hotelRouter)
 app.use('/api', roomRouter)
 connect()
