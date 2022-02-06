@@ -1,4 +1,5 @@
 const roomRouter = require('express').Router()
+
 const {
     getAll_rooms,
     getOne_room,
@@ -7,6 +8,7 @@ const {
     removeOne_room,
     deleteAll_rooms
 } = require('../controllers/room.controller')
+
 roomRouter
     .get('/rooms', getAll_rooms)
     .get('/room/:id', getOne_room)
