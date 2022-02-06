@@ -34,16 +34,13 @@ const add_owner = async (req, res) => {
             role
         } = req.body;
 
-        if (infos.role === "admin") {
-            returnErrorAsResponse(res, "You cann't create admin !");
-        }
-        // let encryptedPassword = await bcrypt.hash(password, 10)
         const user = await Owner.create({
             name,
             email: email.toLowerCase(),
             password,
-            role: 'owner'
+            role
         })
+        const result = await user.save()
 
         console.log(user)
         return res.json({
