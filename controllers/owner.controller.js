@@ -42,9 +42,10 @@ const add_owner = async (req, res) => {
         newOwner.password = req.body.password
 
     console.log('hayyyyyyyyyyyyyyyyyy', req.body)
-
+    // genSalt function, used to generate a salt
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newOwner.password, salt, (err, hash) => {
+            // salt is a random string
             if (err) throw err;
             newOwner.password = hash;
             newOwner
