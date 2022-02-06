@@ -9,10 +9,10 @@ const {
 } = require('../controllers/hotel.controller')
 const isAuthorized = require('../middlewares/permissions')
 const isAuth = require('../middlewares/isAuth')
-hotelRouter.get('/hotels', isAuth, isAuthorized('admin'), get_hotels)
+hotelRouter.get('/hotels', get_hotels)
 hotelRouter.get('/hotel/:id', get_hotel_byId)
-hotelRouter.post('/add-hotel', add_hotel)
-hotelRouter.put('/hotel/:id/update', update_hotel)
-hotelRouter.delete('/hotel/:id/delete', delete_hotel)
+hotelRouter.post('/add-hotel', isAuth, isAuthorized('admin', 'owner'), add_hotel)
+hotelRouter.put('/hotel/:id/update', isAuth, isAuthorized('admin', 'owner'), update_hotel)
+hotelRouter.delete('/hotel/:id/delete', isAuth, isAuthorized('admin', 'owner'), delete_hotel)
 
 module.exports = hotelRouter
