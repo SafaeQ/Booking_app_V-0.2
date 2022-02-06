@@ -7,8 +7,10 @@ const {
     update_hotel,
     delete_hotel
 } = require('../controllers/hotel.controller')
+
 const isAuthorized = require('../middlewares/permissions')
 const isAuth = require('../middlewares/isAuth')
+
 hotelRouter.get('/hotels', get_hotels)
 hotelRouter.get('/hotel/:id', get_hotel_byId)
 hotelRouter.post('/add-hotel', isAuth, isAuthorized('admin', 'owner'), add_hotel)
