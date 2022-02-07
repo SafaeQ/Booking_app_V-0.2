@@ -18,9 +18,12 @@ const Room = mongoose.model('Room',
         price: {
             type: Number
         },
-        state: {
-            type: Boolean,
+        hotel: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Hotel'
         },
+
         description: {
             type: String,
             required: true,
