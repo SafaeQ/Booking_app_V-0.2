@@ -12,6 +12,7 @@ const authRouter = require('./router/auth.routes')
 const ownerRouter = require('./router/owner.routes')
 const hotelRouter = require('./router/hotel.routes')
 const roomRouter = require('./router/room.routes')
+const reserveRouter = require('./router/reservation.routes')
 
 app.use(express.json())
 app.use('/', router)
@@ -19,6 +20,7 @@ app.use('/auth', authRouter)
 app.use('/api', ownerRouter)
 app.use('/api', hotelRouter)
 app.use('/api', roomRouter)
+app.use('/api', reserveRouter)
 connect()
     .catch((error) => {
         throw error

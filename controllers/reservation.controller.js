@@ -13,4 +13,6 @@ const add_reservation = async (req, res) => {
     }
 }
 
-module.exports = add_reservation
+module.exports = {
+    add_reservation
+}
