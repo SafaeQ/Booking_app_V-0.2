@@ -2,8 +2,7 @@ const Reserve = require('../models/reservation')
 
 const add_reservation = async (req, res) => {
     const reservation = await new Reserve({
-        ...req.body,
-        // owner: req.user._id
+        ...req.body
     })
     try {
         await reservation.save()
