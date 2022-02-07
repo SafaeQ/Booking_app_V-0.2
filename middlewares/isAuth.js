@@ -7,7 +7,8 @@ const checkAuthentication = async (req, res, next) => {
     if (!token) return res.sendStatus(401);
     jwt.verify(token, 'secret', (err, decoded) => {
         if (err) return res.sendStatus(403);
-        req.user = decoded;
+        console.log("decoded", decoded);
+        req.user = decoded; // {id:?,role:?}
         next();
     });
 }

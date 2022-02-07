@@ -26,34 +26,34 @@ const getOwner_byId = async (req, res) => {
 }
 
 const add_owner = async (req, res) => {
-    try {
-        const {
-            name,
-            email,
-            password,
-            role
-        } = req.body;
-
-        if (infos.role === "admin") {
-            returnErrorAsResponse(res, "You cann't create admin !");
+    Owner.findOne({
+        email: req.body.email
+    }).then(owner => {
+        if (owner) {
+            return res.status(400).json({
+                email: "email already exists"
+            });
         }
-        // let encryptedPassword = await bcrypt.hash(password, 10)
-        const user = await Owner.create({
-            name,
-            email: email.toLowerCase(),
-            password,
-            role: 'owner'
-        })
+    })
 
-        console.log(user)
-        return res.json({
-            name,
-            email
-        })
+    const newOwner = new Owner()
+    newOwner.name = req.body.name,
+        newOwner.email = req.body.email,
+        newOwner.password = req.body.password
 
-    } catch (error) {
-        console.error("current err ", error)
-    }
+    console.log('hayyyyyyyyyyyyyyyyyy', req.body)
+    // genSalt function, used to generate a salt
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newOwner.password, salt, (err, hash) => {
+            // salt is a random string
+            if (err) throw err;
+            newOwner.password = hash;
+            newOwner
+                .save()
+                .then(owner => res.send(owner))
+                .catch(err => console.log(err));
+        });
+    })
 }
 
 const update_owner = async (req, res) => {
