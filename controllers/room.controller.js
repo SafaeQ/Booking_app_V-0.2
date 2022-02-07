@@ -63,10 +63,10 @@ const update_room = async (req, res) => {
 
 const removeOne_room = async (req, res) => {
     const id = req.params.id
-    const room = await Room.deleteOne(id)
-    res.status(200).send('😜 your room has been deleted', {
-        room
+    const room = await Room.deleteOne({
+        id
     })
+    res.status(200).send('😜 your room has been deleted')
 }
 
 const deleteAll_rooms = async (req, res) => {

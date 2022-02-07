@@ -12,6 +12,17 @@ const add_reservation = async (req, res) => {
     }
 }
 
+const delete_reservation = async (req, res) => {
+    const id = req.params.id
+    const reservation = await Reserve.deleteOne({
+        id
+    })
+    res.status(200).send({
+        reservation
+    })
+}
+
 module.exports = {
-    add_reservation
+    add_reservation,
+    delete_reservation
 }
