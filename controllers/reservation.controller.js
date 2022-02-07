@@ -12,6 +12,13 @@ const add_reservation = async (req, res) => {
     }
 }
 
+// const update_reservation = async (req, res) => {
+//     const id = req.params.id
+// const {
+
+// }
+// }
+
 const delete_reservation = async (req, res) => {
     const id = req.params.id
     const reservation = await Reserve.deleteOne({
