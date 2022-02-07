@@ -21,7 +21,6 @@ const add_room = async (req, res) => {
         type,
         price,
         state,
-        hotel,
         description,
         date
     } = req.body;
@@ -29,7 +28,6 @@ const add_room = async (req, res) => {
         type,
         price,
         state,
-        hotel,
         description,
         date
     })
