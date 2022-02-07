@@ -3,13 +3,14 @@ const mongoose = require("mongoose");
 const Reserve = mongoose.model('Reservation',
     new mongoose.Schema({
         room: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
+            ref: 'Room'
         },
         hotel: {
-            type: String,
-            unique: true,
-            required: true,
+            type: mongoose.Schema.Types.ObjectId,
+            required: false,
+            ref: 'Hotel'
         },
         owner: {
             type: mongoose.Schema.Types.ObjectId,
