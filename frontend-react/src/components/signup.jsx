@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Image, Button} from 'react-bootstrap'
 // import {  } from "react-icons/bs";
 
-export const Signup = (props)=> {
+export const Signup = ()=> {
     const initialForm = {id: null, name:'', email:'', password:'', role:''}
     const [user, setUser] = useState(initialForm)
 
