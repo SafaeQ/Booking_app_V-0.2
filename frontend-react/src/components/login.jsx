@@ -2,6 +2,11 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'
 
 export const Login = ()=> {
+
+    const hundleSubmit = (e)=> {
+        e.preventDefault();
+        console.log('i\'m clicked');
+    }
     return (
         <div>
             <section className="vh-100">
@@ -15,7 +20,7 @@ export const Login = ()=> {
 
                                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
-                                <form className="mx-1 mx-md-4">
+                                <form onSubmit={hundleSubmit} className="mx-1 mx-md-4">
 
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -42,7 +47,7 @@ export const Login = ()=> {
                                 </div>
 
                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                    <button type="button" className="btn btn-primary btn-lg">Submit</button>
+                                    <button type="submit" className="btn btn-primary btn-lg">Submit</button>
                                 </div>
 
                                 </form>
