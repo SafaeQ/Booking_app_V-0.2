@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Image, Button} from 'react-bootstrap'
-// import {  } from "react-icons/bs";
+import axios from 'axios'
 
 export const Signup = ()=> {
     const initialForm = {id: null, name:'', email:'', password:'', role:''}
@@ -9,15 +9,18 @@ export const Signup = ()=> {
     const handleInput = (event)=> {
         // console.log(event);
         const {name, value} = event.target
-        setUser(values => ({...values, [name]: value}))
+        setUser(({...user, [name]: value}))
     }
 
     const hundleSubmit = (e)=> {
-        e.preventDefault();
         console.log('i\'m clicked');
-        const nameInput = e.target.name.value
-        console.log(nameInput)
-        setUser(initialForm)
+        const {name, email, password, role} = user;
+        if (name && email && password && role) {
+            axios.post('http://localhost:8000/auth/signup',user)
+            .then(res => console.log( 'dddd',res))
+        }else{
+            alert('invalid input')
+        }
     }
 
     return (
