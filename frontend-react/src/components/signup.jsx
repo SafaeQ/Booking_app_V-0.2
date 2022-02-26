@@ -2,17 +2,21 @@ import React, {useState} from 'react';
 import {Image, Button} from 'react-bootstrap'
 // import {  } from "react-icons/bs";
 
-export const Signup = ()=> {
+export const Signup = (props)=> {
     const initialForm = {id: null, name:'', email:'', password:'', role:''}
     const [user, setUser] = useState(initialForm)
 
-    const handleInput = ()=> {
-
+    const handleInput = (event)=> {
+        console.log(event);
+        const {name, value} = event.target
+        setUser(values => ({...values, [name]: value}))
     }
 
     const hundleSubmit = (e)=> {
         e.preventDefault();
         console.log('i\'m clicked');
+        
+        setUser(initialForm)
     }
 
     return (
