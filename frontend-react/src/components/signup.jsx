@@ -7,7 +7,7 @@ export const Signup = (props)=> {
     const [user, setUser] = useState(initialForm)
 
     const handleInput = (event)=> {
-        console.log(event);
+        // console.log(event);
         const {name, value} = event.target
         setUser(values => ({...values, [name]: value}))
     }
@@ -15,7 +15,8 @@ export const Signup = (props)=> {
     const hundleSubmit = (e)=> {
         e.preventDefault();
         console.log('i\'m clicked');
-        
+        const nameInput = e.target.name.value
+        console.log(nameInput)
         setUser(initialForm)
     }
 
@@ -38,7 +39,7 @@ export const Signup = (props)=> {
                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label">Your Name</label>
-                                    <input type="text"  className="form-control" />
+                                    <input type="text" name="name" className="form-control" onChange={handleInput} />
                                     </div>
                                 </div>
 
@@ -46,7 +47,7 @@ export const Signup = (props)=> {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email"  className="form-control" />
+                                    <input type="email" name="email" className="form-control" onChange={handleInput} />
                                     </div>
                                 </div>
 
@@ -54,7 +55,7 @@ export const Signup = (props)=> {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password"  className="form-control" />
+                                    <input type="password" name="password" className="form-control" onChange={handleInput} />
                                     </div>
                                 </div>
 
@@ -62,7 +63,7 @@ export const Signup = (props)=> {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" name="role" className="form-control" onChange={handleInput} />
                                     </div>
                                 </div>
 
