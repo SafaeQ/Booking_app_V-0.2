@@ -13,16 +13,19 @@ export const Signup = ()=> {
     }
 
     const hundleSubmit = (e)=> {
+        e.preventDefault()
         console.log('i\'m clicked');
         const {name, email, password, role} = user;
         if (name && email && password && role) {
             axios.post('http://localhost:8000/auth/signup',user)
             .then(res => console.log( 'dddd',res))
-        }else{
-            alert('invalid input')
-        }
-    }
+           } else{
 
+                alert('invalid input')
+            }
+        
+    }
+    
     return (
         <div>
             <section className="vh-100">
