@@ -3,6 +3,7 @@ const app = express()
 const port = 8000;
 const connect = require("./connection/db");
 const bodyParser = require("body-parser")
+const cors = require("cors")
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -14,7 +15,9 @@ const hotelRouter = require('./router/hotel.routes')
 const roomRouter = require('./router/room.routes')
 const reserveRouter = require('./router/reservation.routes')
 
+app.use(cors())
 app.use(express.json())
+
 app.use('/', router)
 app.use('/auth', authRouter)
 app.use('/api', ownerRouter)
