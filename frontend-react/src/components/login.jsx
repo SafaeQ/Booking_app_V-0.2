@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
+import axios from 'axios';
 
 export const Login = ()=> {
+
+    const [user, setUser] = useState({
+        email: '',
+        password: '', 
+        role: '',
+    })
+    const handleInputChange = (e)=> {
+        const {name, value} = e.target.value
+        setUser({
+            ...user,
+            [name]: value
+        })
+    }
 
     const hundleSubmit = (e)=> {
         e.preventDefault();
         console.log('i\'m clicked');
+        axios.post('http://localhost:8000/auth/login',user)
+        .then(res=>{console.log(res.data.message);})
     }
     return (
         <div>
