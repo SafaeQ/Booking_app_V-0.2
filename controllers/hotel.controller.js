@@ -70,3 +70,9 @@ module.exports = {
     update_hotel,
     delete_hotel
 }
+exports.getAllAnnonces = async (req, res) => {
+  const hotels = await Hotel.find().populate('Rooms');
+  if (!hotels)
+    return res.status(400).send("Sorry We Can Not Get Your Request!");
+  res.status(200).send(hotels);
+};
