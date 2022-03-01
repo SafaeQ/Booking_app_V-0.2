@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from 'react-bootstrap/Image'
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
 
-export const Login = ()=> {
+export const Login = props => {
+    let location = useLocation();
 
     const [user, setUser] = useState({
         email: '',
@@ -22,6 +24,7 @@ export const Login = ()=> {
         console.log('i\'m clicked');
         axios.post('http://localhost:8000/auth/login',user)
         .then(res=>{console.log(res.data.message);})
+        
     }
     return (
         <div>
@@ -42,7 +45,7 @@ export const Login = ()=> {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email"  className="form-control" />
+                                    <input type="email"  className="form-control" onChange={handleInputChange} />
                                     </div>
                                 </div>
 
@@ -50,7 +53,7 @@ export const Login = ()=> {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password"  className="form-control" />
+                                    <input type="password"  className="form-control" onChange={handleInputChange} />
                                     </div>
                                 </div>
 
@@ -58,7 +61,7 @@ export const Login = ()=> {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" onChange={handleInputChange}/>
                                     </div>
                                 </div>
 
