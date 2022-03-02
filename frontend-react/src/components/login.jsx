@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Image from 'react-bootstrap/Image'
 import axios from 'axios';
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 export const Login = props => {
-    let location = useLocation();
+    // let location = useLocation();
 
     const [user, setUser] = useState({
         email: '',
@@ -17,6 +17,12 @@ export const Login = props => {
             ...user,
             [name]: value
         })
+    }
+    const onChangeUsername = (e)=> {
+        setUser({name:e.target.value})
+    }
+    const onChangePassword = (e)=> {
+        setUser({password:e.target.value})
     }
 
     const hundleSubmit = (e)=> {
@@ -45,7 +51,7 @@ export const Login = props => {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email"  className="form-control" onChange={handleInputChange} />
+                                    <input type="email"  className="form-control" onChange={onChangeUsername} />
                                     </div>
                                 </div>
 
@@ -53,7 +59,7 @@ export const Login = props => {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password"  className="form-control" onChange={handleInputChange} />
+                                    <input type="password"  className="form-control" onChange={onChangePassword} />
                                     </div>
                                 </div>
 

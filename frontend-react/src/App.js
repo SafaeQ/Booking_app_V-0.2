@@ -12,7 +12,7 @@ function App() {
               <Link to='/'>Home</Link>&nbsp;
               <Link to='/login'>Login</Link>&nbsp;
               <Link to='/signup'>Register</Link>&nbsp;
-              
+              <br /><hr />
           <Routes>
               <Route path="/" element={<Home/>}/>
 
