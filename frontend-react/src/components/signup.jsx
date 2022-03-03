@@ -7,7 +7,6 @@ export const Signup = ()=> {
     const [user, setUser] = useState(initialForm)
 
     const handleInput = (event)=> {
-        // console.log(event);
         const {name, value} = event.target
         setUser(({...user, [name]: value}))
     }
