@@ -4,29 +4,29 @@ import axios from 'axios';
 
 export const Login = props => {
 
-    const [user, setUser] = useState({
+    const [data, setData] = useState({
         email: '',
         password: '', 
         role: '',
     })
     const handleInputChange = (e)=> {
         const {name, value} = e.target.value
-        setUser({
-            ...user,
+        setData({
+            ...data,
             [name]: value
         })
     }
     const onChangeUsername = (e)=> {
-        setUser({name:e.target.value})
+        setData({name:e.target.value})
     }
     const onChangePassword = (e)=> {
-        setUser({password:e.target.value})
+        setData({password:e.target.value})
     }
 
     const hundleSubmit = (e)=> {
         e.preventDefault();
         console.log('i\'m clicked');
-        axios.post('http://localhost:8000/auth/login',user)
+        axios.post('http://localhost:8000/auth/login',data)
         .then(res=>{console.log(res.data.message);})
         
     }
