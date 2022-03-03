@@ -18,7 +18,7 @@ export const Login = props => {
         setData({...data, password:e.target.value})
     }
 
-    const handleRole = (e)=> {
+    const onChangeRole = (e)=> {
         setData({...data, role:e.target.value})
     }
 
@@ -64,7 +64,7 @@ export const Login = props => {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" className="form-control" onChange={handleRole}/>
+                                    <input type="text" className="form-control" onChange={onChangeRole}/>
                                     </div>
                                 </div>
 
