@@ -9,18 +9,17 @@ export const Login = props => {
         password: '', 
         role: '',
     })
-    const handleInputChange = (e)=> {
-        const {name, value} = e.target.value
-        setData({
-            ...data,
-            [name]: value
-        })
-    }
+
     const onChangeUsername = (e)=> {
-        setData({name:e.target.value})
+        setData({...data, name:e.target.value})
     }
+
     const onChangePassword = (e)=> {
-        setData({password:e.target.value})
+        setData({...data, password:e.target.value})
+    }
+
+    const handleRole = (e)=> {
+        setData({...data, role:e.target.value})
     }
 
     const hundleSubmit = (e)=> {
@@ -65,7 +64,7 @@ export const Login = props => {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" className="form-control" onChange={handleInputChange}/>
+                                    <input type="text" className="form-control" onChange={handleRole}/>
                                     </div>
                                 </div>
 
