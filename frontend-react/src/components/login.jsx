@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
 import axios from 'axios';
-// import { useLocation } from "react-router-dom";
 
 export const Login = props => {
-    // let location = useLocation();
 
     const [user, setUser] = useState({
         email: '',
