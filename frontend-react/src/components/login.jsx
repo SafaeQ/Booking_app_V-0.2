@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
-import axios from 'axios';
+import {login} from '../services/authService'
 
 export const Login = props => {
 
@@ -26,9 +26,9 @@ export const Login = props => {
         e.preventDefault();
         console.log('i\'m clicked');
         
-        axios.post('http://localhost:8000/auth/login',data)
-        .then(res=>{console.log(res.data.message);})
-        
+        login(data.email, data.password).then((res)=>{
+            window.localStorage.setItem('token', res.data.token);
+        })
     }
     return (
         <div>
