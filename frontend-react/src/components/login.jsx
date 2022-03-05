@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from 'react-bootstrap/Image'
 // import {login} from '../services/authService'
 
@@ -10,33 +10,30 @@ export const Login = props => {
         role: '',
     })
 
-    // const onChangeUsername = (e)=> {
-    //     setData({...data, email:e.target.value})
-    // }
-
-    // const onChangePassword = (e)=> {
-    //     setData({...data, password:e.target.value})
-    // }
-
-    // const onChangeRole = (e)=> {
-    //     setData({...data, role:e.target.value})
-    // }
-
+    const onChangeInputs = (e)=> {
+         const {name, value} = e.target
+         setData(({...data, [name]: value}))
+        //  console.log(data);
+    }
+ 
     async function hundleSubmit(e) {
         e.preventDefault();
         console.log('i\'m clicked');
+
         const response = await fetch('http://localhost:8000/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({data})
         })
-
         const loginData = await response.json();
-        console.log(loginData);
 
-        // login(data.email, data.password).then((res)=>{
-        //     window.localStorage.setItem('token', res.data.token);
-        // })
+        if(loginData.user){
+            console.log('login is cool')
+            window.location.href = '/'
+        }else{
+            console.log('please check the inputs valu')
+        }   
+        // console.log(loginData);
     }
     return (
         <div>
@@ -57,7 +54,7 @@ export const Login = props => {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email" name="email"  className="form-control" />
+                                    <input type="email" name="email"  className="form-control" onChange={onChangeInputs}/>
                                     </div>
                                 </div>
 
@@ -65,7 +62,7 @@ export const Login = props => {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password" name="password" className="form-control" />
+                                    <input type="password" name="password" className="form-control" onChange={onChangeInputs} />
                                     </div>
                                 </div>
 
@@ -73,7 +70,7 @@ export const Login = props => {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" name="text"className="form-control" />
+                                    <input type="role" name="role"className="form-control" onChange={onChangeInputs}/>
                                     </div>
                                 </div>
 

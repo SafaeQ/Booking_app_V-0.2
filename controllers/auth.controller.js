@@ -74,9 +74,8 @@ const auth_login = async (req, res) => {
                 msg: 'Incorrect Password or email !!'
             });
         }
-
-        const token = signToken(user.id, user.role);
-
+        
+        const token = signToken(user._id, user.role);
         res.status(200).json({
             status: "success",
             token
