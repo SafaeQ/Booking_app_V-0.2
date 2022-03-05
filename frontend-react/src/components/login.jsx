@@ -11,7 +11,7 @@ export const Login = props => {
     })
 
     const onChangeUsername = (e)=> {
-        setData({...data, name:e.target.value})
+        setData({...data, email:e.target.value})
     }
 
     const onChangePassword = (e)=> {
@@ -53,7 +53,7 @@ export const Login = props => {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email"  className="form-control" onChange={onChangeUsername} />
+                                    <input type="email" name="email"  className="form-control" onChange={onChangeUsername} />
                                     </div>
                                 </div>
 
@@ -61,7 +61,7 @@ export const Login = props => {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password"  className="form-control" onChange={onChangePassword} />
+                                    <input type="password" name="password" className="form-control" onChange={onChangePassword} />
                                     </div>
                                 </div>
 
@@ -69,7 +69,7 @@ export const Login = props => {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" className="form-control" onChange={onChangeRole}/>
+                                    <input type="text" name="text"className="form-control" onChange={onChangeRole}/>
                                     </div>
                                 </div>
 
