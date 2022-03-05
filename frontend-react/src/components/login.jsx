@@ -30,6 +30,10 @@ export const Login = props => {
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({data})
         })
+
+        const loginData = await response.json();
+        console.log(loginData);
+
         // login(data.email, data.password).then((res)=>{
         //     window.localStorage.setItem('token', res.data.token);
         // })
