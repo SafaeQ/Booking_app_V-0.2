@@ -10,17 +10,17 @@ export const Login = props => {
         role: '',
     })
 
-    const onChangeUsername = (e)=> {
-        setData({...data, email:e.target.value})
-    }
+    // const onChangeUsername = (e)=> {
+    //     setData({...data, email:e.target.value})
+    // }
 
-    const onChangePassword = (e)=> {
-        setData({...data, password:e.target.value})
-    }
+    // const onChangePassword = (e)=> {
+    //     setData({...data, password:e.target.value})
+    // }
 
-    const onChangeRole = (e)=> {
-        setData({...data, role:e.target.value})
-    }
+    // const onChangeRole = (e)=> {
+    //     setData({...data, role:e.target.value})
+    // }
 
     async function hundleSubmit(e) {
         e.preventDefault();
@@ -51,13 +51,13 @@ export const Login = props => {
 
                                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
-                                <form onSubmit={hundleSubmit} className="mx-1 mx-md-4">
+                                <form onSubmit={hundleSubmit} className="mx}-1 mx-md-4">
 
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Your Email</label>
-                                    <input type="email" name="email"  className="form-control" onChange={onChangeUsername} />
+                                    <input type="email" name="email"  className="form-control" />
                                     </div>
                                 </div>
 
@@ -65,7 +65,7 @@ export const Login = props => {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Password</label>
-                                    <input type="password" name="password" className="form-control" onChange={onChangePassword} />
+                                    <input type="password" name="password" className="form-control" />
                                     </div>
                                 </div>
 
@@ -73,7 +73,7 @@ export const Login = props => {
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" >Role</label>
-                                    <input type="text" name="text"className="form-control" onChange={onChangeRole}/>
+                                    <input type="text" name="text"className="form-control" />
                                     </div>
                                 </div>
 
