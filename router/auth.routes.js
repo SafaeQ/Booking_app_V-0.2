@@ -9,7 +9,7 @@ const {
 authRouter.post('/signup', auth_signup)
 
 authRouter.get('/login', (req, res) => {
-    res.render('auth/signin')
+    // res.render('')
 })
 authRouter.post('/login', auth_login)
 

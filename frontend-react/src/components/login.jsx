@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
-import {login} from '../services/authService'
+// import {login} from '../services/authService'
 
 export const Login = props => {
 
@@ -22,13 +22,17 @@ export const Login = props => {
         setData({...data, role:e.target.value})
     }
 
-    const hundleSubmit = (e)=> {
+    async function hundleSubmit(e) {
         e.preventDefault();
         console.log('i\'m clicked');
-        
-        login(data.email, data.password).then((res)=>{
-            window.localStorage.setItem('token', res.data.token);
+        const response = await fetch('http://localhost:8000/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({data})
         })
+        // login(data.email, data.password).then((res)=>{
+        //     window.localStorage.setItem('token', res.data.token);
+        // })
     }
     return (
         <div>
