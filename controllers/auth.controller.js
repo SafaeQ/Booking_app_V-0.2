@@ -63,7 +63,7 @@ const auth_login = async (req, res) => {
           );
         if (email && password) {
             return res.status(200).json({
-                message: 'EVery thing cool'
+                message: 'EVery thing is cool'
             });
         }
         if (!user || !(await bcrypt.compare(password, user.password))) {
