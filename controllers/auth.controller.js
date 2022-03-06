@@ -50,32 +50,30 @@ const auth_signup = async (req, res, next) => {
 
 
 const auth_login = async (req, res) => {
-
     try {
         const {
             email,
             password
         } = req.body;
-        // console.log(req.body);
-        if (!email && !password) {
-            return res.status(401).json({
-                status: 'fail',
-                message: 'Please Provide an email !'
+        console.log(req.body.email);
+        const user = await Admin.findOne({email }).catch(
+            (err) => {
+              console.log("Error: ", err);
+            }
+          );
+        if (email && password) {
+            return res.status(200).json({
+                message: 'EVery thing cool'
             });
         }
-
-        const user = await Admin.findOne({
-            email
-        });
-
         if (!user || !(await bcrypt.compare(password, user.password))) {
             res.status(401).json({
                 status: "fail",
                 msg: 'Incorrect Password or email !!'
             });
         }
-        
         const token = signToken(user._id, user.role);
+        console.log(req.body);
         res.status(200).json({
             status: "success",
             token

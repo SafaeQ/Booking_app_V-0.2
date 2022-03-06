@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
 // import {login} from '../services/authService'
 
@@ -19,15 +19,22 @@ export const Login = props => {
     async function hundleSubmit(e) {
         e.preventDefault();
         console.log('i\'m clicked');
-
-        const response = await fetch('http://localhost:8000/auth/login', {
+        const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer my-token',
+            },
             body: JSON.stringify({data})
-        })
-        const loginData = await response.json();
+        }
 
-        if(loginData.user){
+        const response = await fetch('http://localhost:8000/auth/login',requestOptions)
+        const dataBody = await response.json();
+
+        if(dataBody.user){
             console.log('login is cool')
             window.location.href = '/'
         }else{
