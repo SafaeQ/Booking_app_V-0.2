@@ -19,7 +19,7 @@ const auth_signup = async (req, res, next) => {
             password,
             role
         } = req.body;
-
+        console.log(req.body.role)
         let encryptedPassword = await bcrypt.hash(password, 10)
         const user = await Admin.create({
                 name,
@@ -36,11 +36,11 @@ const auth_signup = async (req, res, next) => {
                 throw err
             })
 
-        console.log(user)
+        // console.log(user)
         return res.json({
             name,
             email,
-            role
+            // role
         })
 
     } catch (error) {
@@ -49,31 +49,25 @@ const auth_signup = async (req, res, next) => {
 }
 
 
-const auth_login = async (req, res) => {
+const auth_login = async (req, res, next) => {
     try {
         const {
             email,
             password
         } = req.body;
-        console.log(req.body.email);
-        const user = await Admin.findOne({email }).catch(
+        const user = await Admin.findOne({email :req.body.email}).catch(
             (err) => {
-              console.log("Error: ", err);
+                console.log("Error: ", err);
             }
-          );
-        if (email && password) {
-            return res.status(200).json({
-                message: 'EVery thing is cool'
-            });
-        }
+            );
+            // console.log(user);
+        // if (email && password) {
+        //     return res.status(200).send('EVery thing is cool');
+        // }
         if (!user || !(await bcrypt.compare(password, user.password))) {
-            res.status(401).json({
-                status: "fail",
-                msg: 'Incorrect Password or email !!'
-            });
+            res.status(401).json({ message:'data incorrect'});
         }
         const token = signToken(user._id, user.role);
-        console.log(req.body);
         res.status(200).json({
             status: "success",
             token
