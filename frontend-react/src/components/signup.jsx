@@ -3,7 +3,7 @@ import {Image, Button} from 'react-bootstrap'
 import axios from 'axios'
 
 export const Signup = ()=> {
-    const initialForm = {id: null, name:'', email:'', password:'', role:''}
+    const initialForm = {id: '', name:'', email:'', password:'', role:''}
     const [user, setUser] = useState(initialForm)
 
     const handleInput = (event)=> {

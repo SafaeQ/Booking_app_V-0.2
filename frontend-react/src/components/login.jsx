@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Image from 'react-bootstrap/Image'
 // import {login} from '../services/authService'
+import axios from 'axios'
 
 export const Login = props => {
 
@@ -31,15 +32,16 @@ export const Login = props => {
             body: JSON.stringify({data})
         }
 
-        const response = await fetch('http://localhost:8000/auth/login',requestOptions)
-        const dataBody = await response.json();
+        const response = await axios.post('http://localhost:8000/auth/login',data)
+        console.log(response.data);
+        // const dataBody = await response.json();
 
-        if(dataBody.user){
-            console.log('login is cool')
-            window.location.href = '/'
-        }else{
-            console.log('please check the inputs valu')
-        }   
+        // if(dataBody.user){
+        //     console.log('login is cool')
+        //     window.location.href = '/'
+        // }else{
+        //     console.log('please check the inputs valu')
+        // }   
         // console.log(loginData);
     }
     return (
