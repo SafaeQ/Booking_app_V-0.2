@@ -20,17 +20,17 @@ export const Login = props => {
     async function hundleSubmit(e) {
         e.preventDefault();
         console.log('i\'m clicked');
-        const requestOptions = {
-            method: 'POST',
-            cache: "no-cache",
-            credentials: "same-origin",
-            headers: { 
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer my-token',
-            },
-            body: JSON.stringify({data})
-        }
+        // const requestOptions = {
+        //     method: 'POST',
+        //     cache: "no-cache",
+        //     credentials: "same-origin",
+        //     headers: { 
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //         'Authorization': 'Bearer my-token',
+        //     },
+        //     body: JSON.stringify({data})
+        // }
 
         const response = await axios.post('http://localhost:8000/auth/login',data)
         console.log(response.data);
